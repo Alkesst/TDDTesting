@@ -102,4 +102,38 @@ public class Matrix {
         }
         return result;
     }
+
+    public Matrix transposition(){
+        Matrix result = new Matrix(this.getColumns(), this.getRows());
+        for(int i = 0; i < this.getRows(); i++){
+            for(int j = 0; j < this.getColumns(); j++){
+                result.setElement(j, i, this.getElement(i, j));
+            }
+        }
+        return result;
+    }
+
+    public int determinant(){
+        if (this.getColumns() != this.getRows())
+            throw new MatrixException("Not a square Matrix");
+        int determinant = 0;
+        if (this.getRows() == 1){
+            determinant = this.getElement(0, 0);
+        } else if (this.getRows() == 2) {
+            determinant = this.getElement(0, 0) * this.getElement(1, 1) -
+                    this.getElement(0, 1) * this.getElement(1, 0);
+        } else if (this.getRows() == 3){
+            determinant = this.getElement(0,0) * this.getElement(1, 1) * this.getElement(2, 2) +
+            this.getElement(0, 1) * this.getElement(1, 2) * this.getElement(2, 0) +
+            this.getElement(0, 2) * this.getElement(1, 0) * this.getElement(2, 1) -
+            this.getElement(2, 0) * this.getElement(1, 1) * this.getElement(0, 2) -
+            this.getElement(2, 1) * this.getElement(1, 2) * this.getElement(0, 0) -
+            this.getElement(2, 2) * this.getElement(1, 0) * this.getElement(0, 1);
+        } else {
+            determinant = 0;
+        }
+        return determinant;
+    }
+
+
 }

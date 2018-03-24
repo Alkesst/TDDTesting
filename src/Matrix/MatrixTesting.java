@@ -2,13 +2,16 @@ package Matrix;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
+
 public class MatrixTesting {
+    private static int DETERMINANT_RESULT = -2;
+    private static int DETERMINANT_RESULT_3x3 = 0;
+    private static int DETERMINANT_RESULT_4x4 = 0;
+
     @Test
     @DisplayName("Matrix Constructor test")
     void testMatrixConstructor(){
@@ -49,7 +52,7 @@ public class MatrixTesting {
     }
 
     @Test
-    @DisplayName("Tests adding two non-compatible matrices")
+    @DisplayName("Adding Non-compatible Matrix Test")
     void testExceptionAdd(){
         Matrix m1 = new Matrix(2, 4);
         Matrix m2 = new Matrix(4, 2);
@@ -60,7 +63,7 @@ public class MatrixTesting {
     }
 
     @Test
-    @DisplayName("Test adding two compatible matrices")
+    @DisplayName("Adding two compatible Matrix Test")
     void testCompatibleSum(){
         Matrix m1 = new Matrix(2, 2);
         Matrix m2 = new Matrix(2, 2);
@@ -187,4 +190,100 @@ public class MatrixTesting {
         }
 
     }
+
+    /*
+     * Party v2.
+     */
+
+    @Test
+    @DisplayName("Transposition Matrix Test")
+    void testTranspositionMatrix(){
+        Matrix matrix = new Matrix(5, 3);
+        for(int i = 0; i < matrix.getRows(); i++){
+            for(int j = 0; j < matrix.getColumns(); j++){
+                matrix.setElement(i, j, (i + j) / 2);
+            }
+        }
+        Matrix m2 = matrix.transposition();
+        assertEquals(matrix.getColumns(), m2.getRows());
+        assertEquals(matrix.getRows(), m2.getColumns());
+        for(int i = 0; i < matrix.getRows(); i++){
+            for(int j = 0; j < matrix.getColumns(); j++){
+                assertEquals(matrix.getElement(i, j), m2.getElement(j, i));
+            }
+        }
+    }
+
+    @Test
+    @DisplayName("Determinant 1x1 Matrix Test")
+    void testDeterminant1x1Matrix(){
+        Matrix matrix = new Matrix(1, 1);
+        matrix.setElement(0, 0, -2);
+        int determinant = matrix.determinant();
+        assertEquals(DETERMINANT_RESULT, determinant);
+    }
+
+
+    @Test
+    @DisplayName("Determinant 2x2 Matrix Test")
+    void testDeterminant2x2Matrix(){
+        Matrix matrix = new Matrix(2, 2);
+        matrix.setElement(0, 0, 1);
+        matrix.setElement(0, 1, 2);
+        matrix.setElement(1, 0, 3);
+        matrix.setElement(1, 1, 4);
+        int determinant = matrix.determinant();
+        assertEquals(DETERMINANT_RESULT, determinant);
+    }
+
+    @Test
+    @DisplayName("Determinant 3x3 Matrix Test")
+    void testDeterminant3x3Matrix(){
+        Matrix matrix = new Matrix(3, 3);
+        for (int i = 0; i < matrix.getRows(); i++){
+            for (int j = 0; j < matrix.getColumns(); j++){
+                matrix.setElement(i, j, i + j);
+            }
+        }
+        assertEquals(DETERMINANT_RESULT_3x3, matrix.determinant());
+    }
+
+    @Test
+    @DisplayName("Determinant 4x4 Matrix Test")
+    void testDeterminant4x4Matrix(){
+
+    }
+
+    @Test
+    @DisplayName("Determinant Matrix Exception Test")
+    void testDeterminantExceptionTest(){
+        Matrix matrix = new Matrix(4, 5);
+        assertThrows(
+          MatrixException.class,
+                matrix::determinant
+        );
+    }
+/*
+    @Test
+    @DisplayName("Adjunct Matrix Test")
+    void testAdjunctMatrix(){
+        Matrix matrix = new Matrix(3, 3);
+        for (int i = 0; i < matrix.getRows(); i++){
+            for (int j = 0; j < matrix.getColumns(); j++){
+                matrix.setElement(i, j, i + j);
+            }
+        }
+
+    }
+
+    @Test
+    @DisplayName("Adjunct Matrix Exception Test")
+    void testAdjunctMatrixException(){
+        Matrix matrix = new Matrix(3, 4);
+        assertThrows(
+                MatrixException.class,
+                matrix::adjunct
+        );
+    }
+*/
 }

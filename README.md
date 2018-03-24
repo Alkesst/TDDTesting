@@ -31,3 +31,8 @@ elements of the resulting matrix.
 - Let `c` be a scalar number and `m1` a Matrix. Dividing `c` with `m1` is equals to
 divide every element in `m1` with `c`. In other words. `∀ x ∈ m1, c ≠ 0, y = x / c` being y the
  elements of the resulting matrix.
+ - Let `m1` be a Matrix and `m2` its transposed. `m1[x][y] == m2[y][x]` for every x and
+ y belonging to `AxB` (`m1` and `m2` dimension).
+ - The determinant of a Matrix is calculated with the Sarrus rule (3x3 Matrices), with
+ the generic formula (2x2) or just is the element (1x1). (Not sure about my english over here lol)
+ 
