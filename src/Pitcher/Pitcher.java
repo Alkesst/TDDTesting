@@ -46,4 +46,9 @@ public class Pitcher {
     public void empty(){
         this.capacity = 0;
     }
+
+    /*
+        |       | |
+        |  |    | _
+     */
 }
