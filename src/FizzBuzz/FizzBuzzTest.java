@@ -42,7 +42,7 @@ public class FizzBuzzTest {
 
     @Test
     @DisplayName("Number Tester")
-    void shouldRetrunNumber(){
+    void shouldReturnNumber(){
         FizzBuzz fb = new FizzBuzz(8);
         assertEquals((new Integer(8)).toString(), fb.value);
     }

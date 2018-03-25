@@ -50,3 +50,16 @@ divide every element in `m1` with `c`. In other words. `∀ x ∈ m1, c ≠ 0, y
  - If the number is divisible by 5, return Buzz
  - If the number is divisible by 3 and 5, return FizzBuzz
  - In the other cases, return the number
+ 
+ ### The String Calculator
+ Solving the String Calculator from [Roy Osherove's](http://osherove.com/tdd-kata-1/) page
+ - An empty string returns zero
+ - A single number returns the value
+ - Two numbers, comma delimited, returns the sum
+ - Two numbers, newline delimited, returns the sum
+ - Three numbers, delimited either way, returns the sum
+ - Negative numbers throw an exception
+ - Numbers greater than 1000 are ignored
+ - A single char delimiter can be defined on the first line (e.g. //# for a `#` as the delimiter)
+ - A multi char delimiter can be defined on the first line (e.g. //[###] for `###` as the delimiter)
+ - Many single or multi-char delimiters can be defined (each wrapped in square brackets)
