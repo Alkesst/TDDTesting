@@ -1,7 +1,10 @@
 package FizzBuzz;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
+
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,21 +22,28 @@ public class FizzBuzzTest {
     @Test
     @DisplayName("Fizz Tester")
     void shouldReturnFizzIfNumberIsDivisibleBy3(){
-        FizzBuzz fb = new FizzBuzz(3);
+        FizzBuzz fb = new FizzBuzz(21);
         assertEquals(FIZZ_VALUE, fb.value);
     }
 
     @Test
     @DisplayName("Buzz Tester")
     void shouldReturnBuzzIfNumberIsDivisibleBy5(){
-        FizzBuzz fb = new FizzBuzz(5);
+        FizzBuzz fb = new FizzBuzz(20);
         assertEquals(BUZZ_VALUE, fb.value);
     }
 
     @Test
     @DisplayName("FizzBuzz Tester")
     void shouldReturnFizzBuzzIfNumberIsDivisibleBy3And5(){
-        FizzBuzz fb = new FizzBuzz(15);
+        FizzBuzz fb = new FizzBuzz(30);
         assertEquals(FIZZBUZZ_VALUE, fb.value);
+    }
+
+    @Test
+    @DisplayName("Number Tester")
+    void shouldRetrunNumber(){
+        FizzBuzz fb = new FizzBuzz(8);
+        assertEquals((new Integer(8)).toString(), fb.value);
     }
 }

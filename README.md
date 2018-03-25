@@ -3,6 +3,13 @@
 The main target of this repository is learning about TDD, requirements engineering and unit tests
 using jUnit 5 and Java SE 8.
 
+_"Test-driven development (TDD) is a software 
+development process that relies on the repetition 
+of a very short development cycle: requirements are 
+turned into very specific test cases, then the software 
+is improved to pass the new tests."_ 
+— [Wikipedia](https://en.wikipedia.org/wiki/Test-driven_development) 
+
 
 ### Pitcher Requirements
 - Once a pitcher is created, its content will be 0
@@ -12,7 +19,8 @@ capacity
 - Let `a` be the content of the Pitcher `A` and let `b` be the
 capacity of the Pitcher `B`. If `a > b` then, if `B` is refilled with `A`
 then the content of `B` will be equals to `b` and the content of `A` is equals to `a - b`.
-###### Hace farta acabarlo. ^
+- If the pitcher is going to be refilled with a content higher than its capacity, then the
+content will be equals to its capacity
 
 
 
@@ -36,3 +44,9 @@ divide every element in `m1` with `c`. In other words. `∀ x ∈ m1, c ≠ 0, y
  - The determinant of a Matrix is calculated with the Sarrus rule (3x3 Matrices), with
  the generic formula (2x2) or just is the element (1x1). (Not sure about my english over here lol)
  
+ 
+ ### FizzBuzz
+ - If the number is divisible by 3, return Fizz
+ - If the number is divisible by 5, return Buzz
+ - If the number is divisible by 3 and 5, return FizzBuzz
+ - In the other cases, return the number

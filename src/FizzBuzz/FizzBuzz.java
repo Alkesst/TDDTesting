@@ -11,6 +11,8 @@ public class FizzBuzz {
             value = "FIZZ";
         } else if (number % 5 == 0){
             value = "BUZZ";
+        } else {
+            value = (new Integer(number)).toString();
         }
     }
 }
