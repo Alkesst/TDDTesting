@@ -2,6 +2,8 @@ package Matrix;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,23 +34,37 @@ public class MatrixTesting {
     }
 
     @Test
-    @DisplayName("Matrix Out of bounds Get")
-    void testOutOfBoundsGetElement(){
-        Matrix matrix = new Matrix(8, 7);
-        assertThrows(
+    @DisplayName("Exception Out of Bounds Test")
+    void testOutOfBoundsGetElementException(){
+        /* Testing the Matrix Exception */
+        Matrix matrix = new Matrix(5,5);
+        MatrixException except = assertThrows(
                 MatrixException.class,
                 () -> matrix.getElement(200, 200)
         );
+        assertEquals("matrix out of bounds", except.getMessage().toLowerCase());
+    }
+
+    @Test
+    @DisplayName("Exception not square Matrix Test")
+    void testNotSquareMatrixException(){
+        Matrix matrix = new Matrix(5, 4);
+        MatrixException except = assertThrows(
+          MatrixException.class,
+                matrix::determinant
+        );
+        assertEquals("not a square matrix", except.getMessage().toLowerCase());
     }
 
     @Test
     @DisplayName("Matrix Out Of Bounds Set")
     void testOutOfBoundsSetElement(){
         Matrix matrix = new Matrix(7, 7);
-        assertThrows(
+        MatrixException except = assertThrows(
                 MatrixException.class,
                 () -> matrix.setElement(200, 200, 10)
         );
+        assertEquals("matrix out of bounds", except.getMessage().toLowerCase());
     }
 
     @Test
@@ -56,10 +72,11 @@ public class MatrixTesting {
     void testExceptionAdd(){
         Matrix m1 = new Matrix(2, 4);
         Matrix m2 = new Matrix(4, 2);
-        assertThrows(
+        MatrixException except = assertThrows(
                 MatrixException.class,
                 () -> m1.add(m2)
         );
+        assertEquals("incompatible matrices", except.getMessage().toLowerCase());
     }
 
     @Test
@@ -105,10 +122,11 @@ public class MatrixTesting {
     void testSubtractingTwoNonCompatibleMatrix(){
         Matrix m1 = new Matrix(3, 4);
         Matrix m2 = new Matrix(4, 3);
-        assertThrows(
+        MatrixException except = assertThrows(
                 MatrixException.class,
                 () -> m1.subtract(m2)
         );
+        assertEquals("incompatible matrices", except.getMessage().toLowerCase());
     }
 
     @Test
@@ -149,10 +167,11 @@ public class MatrixTesting {
     @DisplayName("Scalar Division Exception test")
     void testScalarDivisionBy0Exception(){
         Matrix m = new Matrix(5, 10);
-        assertThrows(
+        MatrixException except = assertThrows(
                 MatrixException.class,
                 () -> m.scalarDivision(0)
         );
+        assertEquals("scalar division by 0", except.getMessage().toLowerCase());
     }
 
     /*
@@ -164,10 +183,11 @@ public class MatrixTesting {
     void testIncompatibleMatrixMultiplication(){
         Matrix m1 = new Matrix(2, 3);
         Matrix m2 = new Matrix(4, 3);
-        assertThrows(
+        MatrixException except = assertThrows(
           MatrixException.class,
                 () -> m1.multiplication(m2)
         );
+        assertEquals("incompatible matrices", except.getMessage().toLowerCase());
     }
 
     @Test
@@ -181,8 +201,10 @@ public class MatrixTesting {
             }
         }
         Matrix m3 = m1.multiplication(m2);
-        assertEquals(m1.getRows(), m3.getRows());
-        assertEquals(m2.getColumns(), m3.getColumns());
+        assertAll(
+                () -> assertEquals(m1.getRows(), m3.getRows()),
+                () -> assertEquals(m2.getColumns(), m3.getColumns())
+        );
         for(int i = 0; i < m1.getRows(); i++){
             for(int j = 0; j < m1.getColumns(); j++){
                 assertEquals(m1.getIntermediateSummatory(i, j, m2), m2.getElement(i, j));
@@ -205,8 +227,10 @@ public class MatrixTesting {
             }
         }
         Matrix m2 = matrix.transposition();
-        assertEquals(matrix.getColumns(), m2.getRows());
-        assertEquals(matrix.getRows(), m2.getColumns());
+        assertAll(
+                () -> assertEquals(matrix.getColumns(), m2.getRows()),
+                () -> assertEquals(matrix.getRows(), m2.getColumns())
+        );
         for(int i = 0; i < matrix.getRows(); i++){
             for(int j = 0; j < matrix.getColumns(); j++){
                 assertEquals(matrix.getElement(i, j), m2.getElement(j, i));
@@ -258,10 +282,11 @@ public class MatrixTesting {
     @DisplayName("Determinant Matrix Exception Test")
     void testDeterminantExceptionTest(){
         Matrix matrix = new Matrix(4, 5);
-        assertThrows(
+        MatrixException except = assertThrows(
           MatrixException.class,
                 matrix::determinant
         );
+        assertEquals("not a square matrix", except.getMessage().toLowerCase());
     }
 /*
     @Test

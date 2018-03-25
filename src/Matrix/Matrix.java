@@ -39,7 +39,7 @@ public class Matrix {
 
     public Matrix add(Matrix m) throws MatrixException{
         if (this.columns != m.columns || this.rows != m.rows)
-            throw new MatrixException("Incompatible matrices.");
+            throw new MatrixException("Incompatible matrices");
         Matrix result = new Matrix(m.rows, m.columns);
         for(int i = 0; i < m.rows; i++){
             for(int j = 0; j < m.columns; j++){
@@ -51,7 +51,7 @@ public class Matrix {
 
     public Matrix subtract(Matrix m) throws MatrixException{
         if (this.columns != m.columns ||this.rows != m.rows)
-            throw new MatrixException("Incompatible matrices.");
+            throw new MatrixException("Incompatible matrices");
         Matrix result = new Matrix(m.rows, m.columns);
         for(int i = 0; i < m.rows; i++){
             for(int j = 0; j < m.columns; j++){
@@ -85,7 +85,7 @@ public class Matrix {
 
     public Matrix multiplication(Matrix matrix){
         if (this.getColumns() != matrix.getRows())
-            throw new MatrixException("Incompatible matrices.");
+            throw new MatrixException("Incompatible matrices");
         Matrix result = new Matrix(this.getRows(), matrix.getColumns());
         for(int i = 0; i < this.getRows(); i++){
             for(int j = 0; j < this.getColumns(); j++){
