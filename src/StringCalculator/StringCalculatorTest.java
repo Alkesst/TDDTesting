@@ -87,8 +87,24 @@ public class StringCalculatorTest {
     @Test
     void testAddDelimitersHaveLengthGreaterThanOne(){
         StringCalculator sc = new StringCalculator();
-        String numbersToSum = "//[;:___]\n200;:___14;:___6";
+        String numbersToSum = "//[;__]\n200;__14;__6";
         int resultOfTheSum = 220;
+        assertEquals(resultOfTheSum, sc.add(numbersToSum));
+    }
+
+    @Test
+    void testAddMoreThanOneDelimiter(){
+        StringCalculator sc = new StringCalculator();
+        String numbersToSum = "//[#][_]\n200_20#10";
+        int resultOfTheSum = 230;
+        assertEquals(resultOfTheSum, sc.add(numbersToSum));
+    }
+
+    @Test
+    void testAddMoreThanOneDelimiterOfLengthBiggerThanOne(){
+        StringCalculator sc = new StringCalculator();
+        String numbersToSum = "//[###][___]\n200___10###8";
+        int resultOfTheSum = 218;
         assertEquals(resultOfTheSum, sc.add(numbersToSum));
     }
 

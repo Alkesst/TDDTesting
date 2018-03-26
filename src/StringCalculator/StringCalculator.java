@@ -16,20 +16,35 @@ public class StringCalculator {
             return parseInt;
         }
         else{
-            String delimiter = "[,\n]+";
+            StringBuilder delimiter = new StringBuilder();
+            delimiter.append("[");
             if (numbers.contains("//")){
-                String[] delimiters = numbers.split("\n");
+                String[] delimiters = numbers.substring(2).split("\n");
                 if (delimiters[0].contains("[")) {
-                    delimiter = delimiters[0].substring(3, delimiters[0].length() - 1);
+                    String[] moreThanOneDelimiter = delimiters[0].substring(1).split("]");
+                    for (String delimiterIn : moreThanOneDelimiter) {
+                        if (delimiterIn.contains("["))
+                            delimiter.append(delimiterIn.substring(1));
+                        else
+                            delimiter.append(delimiterIn);
+                    }
+                    //delimiter.append(delimiters[0].substring(1, delimiters[0].length() - 1));
                 } else{
-                    delimiter = delimiters[0].substring(2, delimiters[0].length());
+                    delimiter.append(delimiters[0].substring(0, delimiters[0].length()));
                 }
                 numbers = delimiters[1];
+            } else {
+                delimiter.append(",\n");
             }
-            String[] numbersToSum = numbers.split(delimiter);
+            delimiter.append("]");
+           String[] numbersToSum = numbers.split(delimiter.toString());
             int result = 0;
             for (String aNum : numbersToSum) {
-                parseInt = Integer.parseInt(aNum);
+                if (aNum.isEmpty()){
+                    parseInt = 0;
+                } else {
+                    parseInt = Integer.parseInt(aNum);
+                }
                 if (parseInt < 0)
                     throw new NumberFormatException("Negative numbers are not allowed");
                 else if (parseInt > 1000)
