@@ -28,7 +28,6 @@ public class StringCalculator {
                         else
                             delimiter.append(delimiterIn);
                     }
-                    //delimiter.append(delimiters[0].substring(1, delimiters[0].length() - 1));
                 } else{
                     delimiter.append(delimiters[0].substring(0, delimiters[0].length()));
                 }

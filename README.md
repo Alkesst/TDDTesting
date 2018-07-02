@@ -63,3 +63,18 @@ divide every element in `m1` with `c`. In other words. `∀ x ∈ m1, c ≠ 0, y
  - A single char delimiter can be defined on the first line (e.g. //# for a `#` as the delimiter)
  - A multi char delimiter can be defined on the first line (e.g. //[###] for `###` as the delimiter)
  - Many single or multi-char delimiters can be defined (each wrapped in square brackets)
+ 
+ ### Password Verifier
+ Solving the password verifier kata from [Roy Osherove's](http://osherove.com/tdd-kata-3-refactoring/) page
+ - password should be larger than 8 character
+ - password should not be null
+ - password should have one uppercase letter at least
+ - password should have one lowercase letter at least
+ - password should have one number at least
+ 
+ Done until this point.
+##### Advanced
+Todo
+ - Password is OK if at least three of the previous conditions
+ is true
+ - Password is never OK if item 1.4 (1 lowercase at least) is false  
