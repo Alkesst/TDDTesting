@@ -38,4 +38,10 @@ public class EuroTest {
         assertEquals(new Euro(0.61), new Euro(1.03).minus(new Euro(0.42)));
     }
 
+    @Test
+    public void testNotSameObject() {
+        Euro sevenFifty = new Euro(7.50);
+        Object a = new Object();
+        assertFalse((sevenFifty.equals(a)));
+    }
 }

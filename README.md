@@ -78,3 +78,7 @@ Todo
  - Password is OK if at least three of the previous conditions
  is true
  - Password is never OK if item 1.4 (1 lowercase at least) is false  
+ 
+ 
+ ### Euros
+ A wrapper class to represent euros and it's behaviour.
