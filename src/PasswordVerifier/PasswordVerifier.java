@@ -27,9 +27,4 @@ public class PasswordVerifier {
         }
         return containsAtLeastOneUpperCaseLetter && containsAtLeastOneLowerCaseLetter && containsAtLeastOneDigit;
     }
-
-    public static void main(String[] args) {
-        PasswordVerifier passwordVerifier = new PasswordVerifier();
-        System.out.println(passwordVerifier.passwordContainsADigitALowerCaseAndAnUpperCaseLetter("NowItIsAValid3Password;)"));
-    }
 }
