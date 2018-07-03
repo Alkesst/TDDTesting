@@ -82,3 +82,8 @@ Todo
  
  ### Euros
  A wrapper class to represent euros and it's behaviour.
+ 
+ 
+ ## Bonus!
+ All the code wrote in Java is being written in Python (just for fun and
+ learning unit testing in Python)
