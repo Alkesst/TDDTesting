@@ -1,7 +1,8 @@
 # TDDTesting
 
 The main target of this repository is learning about TDD, requirements engineering and unit tests
-using jUnit 5 and Java SE 8.
+using jUnit 5 and Java SE 8. [Bonus!](#bonus) Also, learning unit testing on Python
+
 
 _"Test-driven development (TDD) is a software 
 development process that relies on the repetition 
