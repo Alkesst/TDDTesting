@@ -1,3 +1,5 @@
+import sys
+
 
 class Euro(object):
 
@@ -27,7 +29,15 @@ class Euro(object):
     def __add__(self, other):
         if isinstance(other, Euro):
             return Euro((other.amount + self.amount) / self.conversion)
+        else:
+            raise TypeError('unsupported operand type(s) for -: {} and {}'.format(
+                type(other).__name__, type(self).__name__
+            ))
 
     def __sub__(self, other):
         if isinstance(other, Euro):
             return Euro((self.amount - other.amount) / self.conversion)
+        else:
+            raise TypeError('unsupported operand type(s) for -: {} and {}'.format(
+                type(other).__name__, type(self).__name__
+            ))

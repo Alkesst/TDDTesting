@@ -27,6 +27,16 @@ class EurosTest(unittest.TestCase):
     def test_numeric_safety(self):
         self.assertEqual(Euro(0.61), Euro(1.03) - Euro(0.42))
 
+    def test_will_raise_add(self):
+        e = Euro(2.5)
+        with self.assertRaises(TypeError):
+            e = e + 14
+
+    def test_will_raise_sub(self):
+        e = Euro(0.5)
+        with self.assertRaises(TypeError):
+            e = e - object
+
 
 if __name__ == '__main__':
     unittest.main()
